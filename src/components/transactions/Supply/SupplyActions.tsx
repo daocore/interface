@@ -132,6 +132,7 @@ export const SupplyActions = React.memo(
       setGasLimit(supplyGasLimit.toString());
     }, [requiresApproval, approvalTxState, usePermit, setGasLimit]);
 
+    // 供应click事件
     const action = async () => {
       try {
         setMainTxState({ ...mainTxState, loading: true });
@@ -156,11 +157,14 @@ export const SupplyActions = React.memo(
           await response.wait(1);
         } else {
           action = ProtocolAction.supply;
+          console.log(parseUnits(amountToSupply, decimals).toString(), 1)
           let supplyTxData = supply({
             amount: parseUnits(amountToSupply, decimals).toString(),
             reserve: poolAddress,
           });
+          console.log(supplyTxData, poolAddress)
           supplyTxData = await estimateGasLimit(supplyTxData);
+          console.log(supplyTxData, 2)
           response = await sendTx(supplyTxData);
 
           await response.wait(1);

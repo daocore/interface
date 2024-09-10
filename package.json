@@ -28,7 +28,8 @@
     "test:headless": "export DOTENV_CONFIG_PATH='../../../.env.local' && cypress run --config-file './cypress/configs/local/full.config.ts'",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "push": "git add . && git commit -m 'update' --no-verify && git push origin main"
   },
   "dependencies": {
     "@aave/contract-helpers": "1.30.2",
@@ -150,7 +151,6 @@
     "Vladimir Konstantinovich Yumatov <vladimir@aave.com>"
   ],
   "lint-staged": {
-    "!(.prettierignore)*.*": "yarn lint:fix",
     "*.svg": "npx svgo --final-newline"
   },
   "nextBundleAnalysis": {

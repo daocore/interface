@@ -152,7 +152,10 @@ export const TxActionsWrapper = ({
       <Button
         variant="contained"
         disabled={disabled || blocked || readOnlyModeAddress !== undefined}
-        onClick={handleClick}
+        onClick={()=>{
+          console.log(1);
+          handleClick?.()
+        }}
         size="large"
         sx={{ minHeight: '44px', ...(approvalParams ? { mt: 2 } : {}) }}
         data-cy="actionButton"
